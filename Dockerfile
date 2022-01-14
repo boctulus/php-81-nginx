@@ -1,4 +1,4 @@
-FROM php:8.1-alpine
+FROM php:8.1.0-fpm
 
 # Install system dependencies
 RUN apk update and apk add git
