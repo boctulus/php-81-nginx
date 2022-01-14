@@ -1,4 +1,4 @@
-FROM php:8.1-alpine
+FROM FROM devilbox/php-fpm-8.1:latest
 
 # Install system dependencies
 RUN apk update and apk add git
@@ -28,4 +28,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-COPY . /var/www/html
+COPY ./htdocs /var/www/html
