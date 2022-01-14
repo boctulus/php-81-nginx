@@ -5,9 +5,9 @@ services:
     app:
         build: .
         container_name: php-app
-        working_dir: /www/html/
+        working_dir: /var/www/html/
         volumes:
-            - ./:/www/html
+            - ./:/var/www/html
         networks:
             - app-network
 
@@ -30,14 +30,14 @@ services:
     # Nginx service
     nginx:
         tty: true
-        image: nginx:alpine
+        image: php:8.1.0-fpm
         container_name: php-nginx
         depends_on:
             - app   
         ports:
             - "8080:80"
         volumes:
-            - ./:/www/html
+            - ./:/var/www/html
             - ./nginx/conf.d/:/etc/nginx/conf.d/
         networks:
             - app-network

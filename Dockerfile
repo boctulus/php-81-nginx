@@ -1,4 +1,4 @@
-FROM php:8.1.0-fpm
+FROM php:8.1-alpine
 
 # Install system dependencies
 RUN apk update and apk add git
@@ -26,8 +26,6 @@ RUN docker-php-ext-install pdo_mysql
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /www/html
+WORKDIR /var/www/html
 
-RUN mkdir -p /www/html/public
-
-COPY . /www/html/public/
+COPY . /var/www/html
